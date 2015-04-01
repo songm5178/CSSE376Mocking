@@ -9,5 +9,9 @@ namespace ExpediaTest
         {
             return new Car(7) { Name = "Saab 9-5 Sports Sedan" };
         }
+        public static Car BMW()
+        {
+            return new Car(10) { Name = "BMW Rented for 10 days" };
+        }
 	}
 }

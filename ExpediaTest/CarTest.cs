@@ -98,5 +98,13 @@ namespace ExpediaTest
             Assert.AreEqual(milesForCar, miles);
             mocks.VerifyAll();
         }
+
+        [TestMethod]
+        public void TestThatCarHasCorrectBasePriceForTenDaysForTask9()
+        {
+            var target = ObjectMother.BMW();
+            Assert.AreEqual(10 * 10 * .8, target.getBasePrice());
+        }
+		
 	}
 }
