@@ -50,10 +50,7 @@ namespace ExpediaTest
 		{
 			new Car(-5);
 		}
-     //   public String getCarLocation(int carNumber)
-     //   {
-     //       return Database.getCarLocation(carNumber);
-     //   }
+
         [TestMethod()]
         public void TestThatGetCarLocationWorks()
         {
@@ -79,6 +76,27 @@ namespace ExpediaTest
 
             result = car.getCarLocation(anotherCarNum);
             Assert.AreEqual(anotherCarLoc, result);
+            mocks.VerifyAll();
+        }
+
+
+        [TestMethod()]
+        public void TestCarMileage()
+        {
+            IDatabase mockDatabase = mocks.StrictMock<IDatabase>();
+            
+            Expect.Call(mockDatabase.Miles).PropertyBehavior();
+
+            mocks.ReplayAll();
+
+            Int32 miles = 100;
+
+            mockDatabase.Miles = miles;
+            var target = new Car(10);
+            target.Database = mockDatabase;
+            int milesForCar = target.Mileage;
+            Assert.AreEqual(milesForCar, miles);
+            mocks.VerifyAll();
         }
 	}
 }
